@@ -56,10 +56,10 @@ export default function Sidebar() {
         </button>
       </div>
 
-      {/* Sidebar overlay (background when menu is open) */}
+      {/* Sidebar overlay (background when menu is open for mobile) */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black opacity-50 z-40"
+          className="fixed inset-0 bg-black  md:bg-inherit opacity-50 z-40"
           onClick={toggleMenu}
           aria-hidden="true"
         />
@@ -91,21 +91,20 @@ export default function Sidebar() {
         <nav className="flex flex-col lg:px-8  p-4">
           <ul className="mt-3 lg:mt-9 after:space-y-6">
             <hr className="w-full my-2 " />
-
-            <li className="w-full  lg:px-8 text-lg hover:bg-blue-50 p-4 rounded">
-              <Link href="/list" className="" onClick={toggleMenu}>
+            <Link href="/list" className="" onClick={toggleMenu}>
+              <li className="w-full  lg:px-8 text-lg hover:bg-blue-50 p-4 rounded">
                 List
-              </Link>
-            </li>
+              </li>
+            </Link>
             <hr className="w-full my-2 " />
 
             {/* Show setting option only for admin users */}
             {session?.data?.user?.role === "admin" && (
-              <li className="w-full lg:px-8  text-lg hover:bg-blue-50 p-4 rounded">
-                <Link href="/setting" className="" onClick={toggleMenu}>
+              <Link href="/setting" className="" onClick={toggleMenu}>
+                <li className="w-full lg:px-8  text-lg hover:bg-blue-50 p-4 rounded">
                   Setting
-                </Link>
-              </li>
+                </li>
+              </Link>
             )}
             {session?.data?.user?.role === "admin" && (
               <hr className="w-full my-2 " />
