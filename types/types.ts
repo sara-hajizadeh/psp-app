@@ -3,3 +3,6 @@ export interface Post {
   title: string;
   body: string;
 }
+export interface SingleCardProps {
+  post: Post;
+}

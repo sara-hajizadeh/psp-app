@@ -17,7 +17,7 @@ export default async function PostsPage() {
       <h1 className="text-2xl mt-3 lg:mt-8 mb-6">Posts List</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {posts.map((post) => (
-          <SingleCard key={post.id} post={post} />
+          <SingleCard post={post} />
         ))}
       </div>
     </div>

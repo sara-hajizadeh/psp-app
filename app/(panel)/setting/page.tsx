@@ -6,8 +6,8 @@ import { useState } from "react";
 const SettingsPage = () => {
   const session = useSession();
 
-  const [username, setUsername] = useState("John Doe");
-  const [email, setEmail] = useState("johndoe@example.com");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
 
   const handleProfileUpdate = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

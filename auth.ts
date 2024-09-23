@@ -1,6 +1,11 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 
+interface CustomCredentials {
+  email?: string | undefined | unknown;
+  password?: string | undefined | unknown;
+}
+
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     Credentials({
@@ -8,23 +13,23 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         email: { label: "Email", type: "email" },
         password: { label: "Password", type: "password" },
       },
-      authorize: async (credentials: Credentials | undefined) => {
+      authorize: async (credentials: CustomCredentials | undefined) => {
         console.log("hello from auth.ts", credentials);
         let user = null;
         if (
-          credentials.email === "admin@gmail.com" &&
-          credentials.password === "admin"
+          credentials?.email === "admin@gmail.com" &&
+          credentials?.password === "admin"
         ) {
           user = {
             email: credentials.email,
             role: "admin",
           };
         } else if (
-          credentials.email === "user@gmail.com" &&
-          credentials.password === "user"
+          credentials?.email === "user@gmail.com" &&
+          credentials?.password === "user"
         ) {
           user = {
-            email: credentials.email,
+            email: credentials?.email,
             role: "user",
           };
         }
@@ -48,7 +53,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
     async session({ session, token, user }) {
       // Send properties to the client, like an access_token and user id from a provider.
-      session.user.role = token.role;
+      session.user.role = token.role as string | undefined;
 
       return session;
     },

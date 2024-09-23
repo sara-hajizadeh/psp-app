@@ -1,6 +1,6 @@
-import { Post } from "@/types/types";
+import { SingleCardProps } from "@/types/types";
 
-const SingleCard = ({ post }: Post) => {
+const SingleCard = ({ post }: SingleCardProps) => {
   return (
     <div className="bg-white shadow-sm  rounded-[6px] p-4">
       <h3 className="text-base lg:text-lg leading-relaxed mb-2">
