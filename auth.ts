@@ -14,7 +14,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         password: { label: "Password", type: "password" },
       },
       authorize: async (credentials: CustomCredentials | undefined) => {
-        console.log("hello from auth.ts", credentials);
         let user = null;
         if (
           credentials?.email === "admin@gmail.com" &&
